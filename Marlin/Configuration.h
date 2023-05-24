@@ -1746,16 +1746,16 @@
     #define PROBE_DEPLOY_FEEDRATE (133 * 60)  // (mm/min) Probe deploy speed
     #define PROBE_STOW_FEEDRATE   (133 * 60)  // (mm/min) Probe stow speed
 
-    #define MAG_MOUNTED_DEPLOY_1 { PROBE_DEPLOY_FEEDRATE, { 176, 0,  0 } }    // Move to front dock & attach probe
+    #define MAG_MOUNTED_DEPLOY_1 { PROBE_DEPLOY_FEEDRATE, { 176, 0,  1 } }    // Move to front dock & attach probe
     #define MAG_MOUNTED_DEPLOY_2 { PROBE_DEPLOY_FEEDRATE, { 176, 0, 20 } }    // Move probe off dock
-    #define MAG_MOUNTED_DEPLOY_3 { PROBE_DEPLOY_FEEDRATE, {   0, 0,  0 } }  // Extra move if needed
-    #define MAG_MOUNTED_DEPLOY_4 { PROBE_DEPLOY_FEEDRATE, {   0, 0,  0 } }  // Extra move if needed
-    #define MAG_MOUNTED_DEPLOY_5 { PROBE_DEPLOY_FEEDRATE, {   0, 0,  0 } }  // Extra move if needed
+    //#define MAG_MOUNTED_DEPLOY_3 { PROBE_DEPLOY_FEEDRATE, {   0, 0,  0 } }  // Extra move if needed
+    //#define MAG_MOUNTED_DEPLOY_4 { PROBE_DEPLOY_FEEDRATE, {   0, 0,  0 } }  // Extra move if needed
+    //#define MAG_MOUNTED_DEPLOY_5 { PROBE_DEPLOY_FEEDRATE, {   0, 0,  0 } }  // Extra move if needed
     #define MAG_MOUNTED_STOW_1   { PROBE_STOW_FEEDRATE,   { 176, 0, 20 } }    // Move right above the dock
-    #define MAG_MOUNTED_STOW_2   { PROBE_STOW_FEEDRATE,   { 176, 0,  0 } }    // Move probe into dock
-    #define MAG_MOUNTED_STOW_3   { PROBE_STOW_FEEDRATE,   {  50, 0,  0 } }  // Side move to remove probe
-    #define MAG_MOUNTED_STOW_4   { PROBE_STOW_FEEDRATE,   {   0, 0,  0 } }  // Extra move if needed
-    #define MAG_MOUNTED_STOW_5   { PROBE_STOW_FEEDRATE,   {   0, 0,  0 } }  // Extra move if needed
+    #define MAG_MOUNTED_STOW_2   { PROBE_STOW_FEEDRATE,   { 176, 0,  1 } }    // Move probe into dock
+    #define MAG_MOUNTED_STOW_3   { PROBE_STOW_FEEDRATE,   {  50, 0,  1 } }    // Side move to remove probe
+    //#define MAG_MOUNTED_STOW_4   { PROBE_STOW_FEEDRATE,   {   0, 0,  0 } }  // Extra move if needed
+    //#define MAG_MOUNTED_STOW_5   { PROBE_STOW_FEEDRATE,   {   0, 0,  0 } }  // Extra move if needed
   #endif
 #endif
 
