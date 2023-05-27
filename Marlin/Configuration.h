@@ -24,12 +24,14 @@
 /** Suat */
 #define CASE_LIGHT_ENABLE
 
-#define GRID_MAX_POINTS_X 7
+#define GRID_MAX_POINTS_X 10
 #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
 // #define MAG_MOUNTED_PROBE
 // #define PINS_DEBUGGING
 // #define DEBUG_LEVELING_FEATURE
+
+// #define STARTUP_CHIME
 /** /Suat */
 
 /**
@@ -149,6 +151,12 @@
 // Author info of this build printed to the host during boot and M115
 #define STRING_CONFIG_H_AUTHOR "(knutwurst)" // Who made the changes.
 // #define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
+#if ENABLED(SUI_ANYGREEN)
+    #define STRING_CONFIG_H_AUTHOR "(knutwurst) anygreen"
+#endif
+#if ENABLED(SUI_ANYBLUE)
+    #define STRING_CONFIG_H_AUTHOR "(knutwurst) anyblue"
+#endif
 
 /**
  * *** VENDORS PLEASE READ ***
@@ -1755,18 +1763,19 @@
   #define MAG_MOUNTED_PROBE
   #if ENABLED(MAG_MOUNTED_PROBE)
     #define PROBE_DEPLOY_FEEDRATE (133 * 60)  // (mm/min) Probe deploy speed
-    #define PROBE_STOW_FEEDRATE   (133 * 60)  // (mm/min) Probe stow speed
+    #define PROBE_STOW_FEEDRATE_FAST   (133 * 60)  // (mm/min) Probe stow speed
+    #define PROBE_STOW_FEEDRATE_SLOW   (133 * 60 / 4)  // (mm/min) Probe stow speed
 
-    #define MAG_MOUNTED_DEPLOY_1 { PROBE_DEPLOY_FEEDRATE, { 176, 0,  1 } }    // Move to front dock & attach probe
-    #define MAG_MOUNTED_DEPLOY_2 { PROBE_DEPLOY_FEEDRATE, { 176, 0, 20 } }    // Move probe off dock
-    //#define MAG_MOUNTED_DEPLOY_3 { PROBE_DEPLOY_FEEDRATE, {   0, 0,  0 } }  // Extra move if needed
-    //#define MAG_MOUNTED_DEPLOY_4 { PROBE_DEPLOY_FEEDRATE, {   0, 0,  0 } }  // Extra move if needed
-    //#define MAG_MOUNTED_DEPLOY_5 { PROBE_DEPLOY_FEEDRATE, {   0, 0,  0 } }  // Extra move if needed
-    #define MAG_MOUNTED_STOW_1   { PROBE_STOW_FEEDRATE,   { 176, 0, 20 } }    // Move right above the dock
-    #define MAG_MOUNTED_STOW_2   { PROBE_STOW_FEEDRATE,   { 176, 0,  1 } }    // Move probe into dock
-    #define MAG_MOUNTED_STOW_3   { PROBE_STOW_FEEDRATE,   {  50, 0,  1 } }    // Side move to remove probe
-    //#define MAG_MOUNTED_STOW_4   { PROBE_STOW_FEEDRATE,   {   0, 0,  0 } }  // Extra move if needed
-    //#define MAG_MOUNTED_STOW_5   { PROBE_STOW_FEEDRATE,   {   0, 0,  0 } }  // Extra move if needed
+      #define MAG_MOUNTED_DEPLOY_1 { PROBE_DEPLOY_FEEDRATE, { 176, 0,  1 } }    // Move to front dock & attach probe
+      #define MAG_MOUNTED_DEPLOY_2 { PROBE_DEPLOY_FEEDRATE, { 176, 0, 20 } }    // Move probe off dock
+      //#define MAG_MOUNTED_DEPLOY_3 { PROBE_DEPLOY_FEEDRATE, {   0, 0,  0 } }  // Extra move if needed
+      //#define MAG_MOUNTED_DEPLOY_4 { PROBE_DEPLOY_FEEDRATE, {   0, 0,  0 } }  // Extra move if needed
+      //#define MAG_MOUNTED_DEPLOY_5 { PROBE_DEPLOY_FEEDRATE, {   0, 0,  0 } }  // Extra move if needed
+      #define MAG_MOUNTED_STOW_1   { PROBE_STOW_FEEDRATE_FAST,   { 176, 10, 20 } }    // Move a bit in front of the dock
+      #define MAG_MOUNTED_STOW_2   { PROBE_STOW_FEEDRATE_SLOW,   { 176, 10, 10 } }    // Slowly move forward
+      #define MAG_MOUNTED_STOW_3   { PROBE_STOW_FEEDRATE_SLOW,   { 176,  0,  1 } }    // Slowly move down
+      #define MAG_MOUNTED_STOW_4   { PROBE_STOW_FEEDRATE_FAST,   {  50,  0,  1 } }    // Side move to remove probe
+      //#define MAG_MOUNTED_STOW_5   { PROBE_STOW_FEEDRATE,   {   0, 0,  0 } }  // Extra move if needed
   #endif
 #endif
 
